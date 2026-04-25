@@ -5,7 +5,7 @@ const episodes = [
     series: "Failure x Finance",
     tag: "失敗ログ",
     duration: "音声 12分 / 読了 6分",
-    audio: "assets/audio/sample-local.wav",
+    audio: "assets/audio/launch-sample.m4a",
     lead: "サンプル不足、KPI後付け、感情トレードを、責める材料ではなく再現性を作るデータに変える。",
     body: [
       ["導入", "同じ失敗を繰り返す時、問題は意志の弱さではなく、記録の粒度が粗いことが多い。負けを曖昧にすると、次の判断も曖昧になる。だから負けログは最重要データとして扱う。"],
@@ -20,7 +20,7 @@ const episodes = [
     series: "Money Mind",
     tag: "金融リテラシー",
     duration: "音声 15分 / 読了 7分",
-    audio: "assets/audio/sample-local.wav",
+    audio: "assets/audio/launch-sample.m4a",
     lead: "お金の不安で認知能力が落ちる前に、貯蓄、自動化、支出ルールで判断回数を減らす。",
     body: [
       ["導入", "お金の不安が強い時、人は短期的な判断に寄る。これは性格の問題ではなく、脳の帯域が不安に奪われるからだ。"],
@@ -35,7 +35,7 @@ const episodes = [
     series: "Time Capital",
     tag: "時間資本",
     duration: "音声 10分 / 読了 5分",
-    audio: "assets/audio/sample-local.wav",
+    audio: "assets/audio/launch-sample.m4a",
     lead: "高速道路の停止時間を、怒りではなく復習と再設計に使うためのオフライン学習導線。",
     body: [
       ["導入", "渋滞やトンネルで通信が切れる時、オンライン前提の学習は止まる。止まらない教材を用意しておけば、待ち時間は小さな学習ブロックになる。"],
@@ -136,14 +136,14 @@ async function registerServiceWorker() {
 
 async function saveForOffline() {
   if (!("caches" in window)) return;
-  const cache = await caches.open("quant-log-drive-study-v1");
+  const cache = await caches.open("quant-log-drive-study-v2");
   const urls = [
     "./",
     "index.html",
     "styles.css",
     "app.js",
     "manifest.webmanifest",
-    "assets/audio/sample-local.wav"
+    "assets/audio/launch-sample.m4a"
   ];
   await cache.addAll(urls);
   elements.cacheButton.textContent = "保存済み";

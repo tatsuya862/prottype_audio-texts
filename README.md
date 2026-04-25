@@ -12,6 +12,6 @@
 
 ## 実運用で差し替えるもの
 
-- `assets/audio/sample-local.wav` を各教材の音声ファイルに差し替え
+- `assets/audio/launch-sample.m4a` を各教材の音声ファイルに差し替え
 - `app.js` の `episodes` 配列に本番タイトル、本文、音声パスを追加
 - 独立公開する場合は `14_prottype/index.html` を公開先のルートに配置
