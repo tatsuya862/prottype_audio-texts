@@ -30,6 +30,22 @@ const episodes = [
     ]
   },
   {
+    id: "bonds-and-interest-rates",
+    title: "本当に分かる債券と金利",
+    series: "Finance Literacy",
+    tag: "債券",
+    duration: "音声 3分 / 読了 6分",
+    audio: "assets/audio/bonds-summary.wav",
+    lead: "債券はお金を貸す金融商品。金利と債券価格の逆相関を押さえると、ローンや投資の見え方が変わる。",
+    body: [
+      ["導入", "債券とは、国や企業などの発行体にお金を貸す金融商品。投資家は利息を受け取り、満期には元本返済を受ける。株式と違い、債券には償還期限がある。"],
+      ["3つの基本要素", "債券を見る時は、誰が発行しているか、いつ元本が返るか、どれくらいの利回りがあるかを見る。発行体、償還期限、利回りの3つが理解の土台になる。"],
+      ["金利との関係", "最重要ルールは、金利が上がると債券価格は下がり、金利が下がると債券価格は上がること。新しい債券の利回りが魅力的になると、古い低利回り債券の価格は下がる。"],
+      ["生活への接続", "債券市場は住宅ローン、自動車ローン、企業の借入金利、銀行金利にも影響する。国債金利を見ることは、社会の資金コストを見ることでもある。"],
+      ["持ち帰り", "債券は安定資産としてポートフォリオの値動きを抑える役割がある。ただし発行体が破綻しないことが前提で、金利変動リスクもある。"]
+    ]
+  },
+  {
     id: "time-capital-driving",
     title: "渋滞時間を資本に変える",
     series: "Time Capital",
@@ -136,14 +152,15 @@ async function registerServiceWorker() {
 
 async function saveForOffline() {
   if (!("caches" in window)) return;
-  const cache = await caches.open("quant-log-drive-study-v2");
+  const cache = await caches.open("quant-log-drive-study-v3");
   const urls = [
     "./",
     "index.html",
     "styles.css",
     "app.js",
     "manifest.webmanifest",
-    "assets/audio/launch-sample.m4a"
+    "assets/audio/launch-sample.m4a",
+    "assets/audio/bonds-summary.wav"
   ];
   await cache.addAll(urls);
   elements.cacheButton.textContent = "保存済み";
