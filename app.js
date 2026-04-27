@@ -157,7 +157,7 @@ async function registerServiceWorker() {
 
 async function saveForOffline() {
   if (!("caches" in window)) return;
-  const cache = await caches.open("quant-log-drive-study-v4");
+  const cache = await caches.open("quant-log-drive-study-v5");
   const urls = [
     "./",
     "index.html",
