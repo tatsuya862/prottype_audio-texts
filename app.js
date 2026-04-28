@@ -249,7 +249,7 @@ async function registerServiceWorker() {
 
 async function saveForOffline() {
   if (!("caches" in window)) return;
-  const cache = await caches.open("quant-log-drive-study-v8");
+  const cache = await caches.open("quant-log-drive-study-v9");
   const urls = [
     "./",
     "index.html",
@@ -266,8 +266,18 @@ async function saveForOffline() {
     "assets/audio/rich-dad-summary.wav",
     "assets/audio/stocks-summary.wav"
   ];
-  await cache.addAll(urls);
-  elements.cacheButton.textContent = "保存済み";
+  elements.cacheButton.textContent = "保存中";
+  elements.cacheButton.disabled = true;
+
+  try {
+    const results = await Promise.allSettled(urls.map((url) => cache.add(url)));
+    const failed = results.filter((result) => result.status === "rejected").length;
+    elements.cacheButton.textContent = failed ? `一部未保存 ${failed}件` : "保存済み";
+  } catch {
+    elements.cacheButton.textContent = "保存エラー";
+  } finally {
+    elements.cacheButton.disabled = false;
+  }
 }
 
 elements.modeButtons.forEach((button) => {
@@ -284,5 +294,5 @@ window.addEventListener("offline", updateConnectionStatus);
 updateConnectionStatus();
 render();
 registerServiceWorker().catch(() => {
-  elements.cacheButton.textContent = "保存準備エラー";
+  elements.cacheButton.textContent = "保存非対応";
 });

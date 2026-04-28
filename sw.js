@@ -1,4 +1,4 @@
-const CACHE_NAME = "quant-log-drive-study-v8";
+const CACHE_NAME = "quant-log-drive-study-v9";
 const CORE_ASSETS = [
   "./",
   "index.html",
@@ -6,17 +6,7 @@ const CORE_ASSETS = [
   "app.js",
   "manifest.webmanifest",
   "assets/ai-generated.jpg",
-  "assets/favicon_16x16.png",
-  "assets/audio/launch-sample.m4a",
-  "assets/audio/bonds-summary.wav",
-  "assets/audio/die-with-zero-summary.wav",
-  "assets/audio/fx-market-summary.wav",
-  "assets/audio/money-rules-summary.wav",
-  "assets/audio/money-script-summary.wav",
-  "assets/audio/new-app-notice-summary.wav",
-  "assets/audio/past-spending-potential-finance-summary.wav",
-  "assets/audio/rich-dad-summary.wav",
-  "assets/audio/stocks-summary.wav"
+  "assets/favicon_16x16.png"
 ];
 
 self.addEventListener("install", (event) => {
