@@ -239,16 +239,21 @@ function render() {
 
 async function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) {
+    elements.cacheButton.textContent = "教材を保存";
+    return;
+  }
+
+  const registration = await navigator.serviceWorker.register("sw.js");
+  await registration.update();
+}
+
+async function saveForOffline() {
+  if (!("caches" in window)) {
     elements.cacheButton.textContent = "保存非対応";
     elements.cacheButton.disabled = true;
     return;
   }
 
-  await navigator.serviceWorker.register("sw.js");
-}
-
-async function saveForOffline() {
-  if (!("caches" in window)) return;
   const cache = await caches.open("quant-log-drive-study-v9");
   const urls = [
     "./",
@@ -266,13 +271,23 @@ async function saveForOffline() {
     "assets/audio/rich-dad-summary.wav",
     "assets/audio/stocks-summary.wav"
   ];
-  elements.cacheButton.textContent = "保存中";
+  elements.cacheButton.textContent = `保存中 0/${urls.length}`;
   elements.cacheButton.disabled = true;
 
   try {
-    const results = await Promise.allSettled(urls.map((url) => cache.add(url)));
-    const failed = results.filter((result) => result.status === "rejected").length;
-    elements.cacheButton.textContent = failed ? `一部未保存 ${failed}件` : "保存済み";
+    let failed = 0;
+
+    for (const [index, url] of urls.entries()) {
+      try {
+        await cache.add(url);
+      } catch {
+        failed += 1;
+      }
+
+      elements.cacheButton.textContent = `保存中 ${index + 1}/${urls.length}`;
+    }
+
+    elements.cacheButton.textContent = failed ? `未保存 ${failed}件` : "保存済み";
   } catch {
     elements.cacheButton.textContent = "保存エラー";
   } finally {
@@ -294,5 +309,5 @@ window.addEventListener("offline", updateConnectionStatus);
 updateConnectionStatus();
 render();
 registerServiceWorker().catch(() => {
-  elements.cacheButton.textContent = "保存非対応";
+  elements.cacheButton.textContent = "教材を保存";
 });

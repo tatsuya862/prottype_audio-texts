@@ -25,7 +25,7 @@
         <button class="mode-button is-active" type="button" data-mode="audio" role="tab" aria-selected="true">音声</button>
         <button class="mode-button" type="button" data-mode="text" role="tab" aria-selected="false">文章</button>
       </div>
-      <button class="cache-button" type="button" id="cacheButton">オフライン保存</button>
+      <button class="cache-button" type="button" id="cacheButton" aria-live="polite">教材を保存</button>
     </section>
 
     <section class="now-panel" aria-label="現在の教材">
@@ -62,6 +62,6 @@
     </button>
   </template>
 
-  <script src="app.js?v=20260428-offline-save-fix"></script>
+  <script src="app.js?v=20260428-save-button-fix"></script>
 </body>
 </html>

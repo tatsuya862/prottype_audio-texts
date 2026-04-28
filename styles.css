@@ -129,6 +129,11 @@ h1 {
   background: #efc468;
 }
 
+.cache-button:disabled {
+  cursor: wait;
+  opacity: 0.74;
+}
+
 .now-panel,
 .lesson-list {
   background: rgba(18, 24, 27, 0.92);
