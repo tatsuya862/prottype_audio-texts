@@ -1,9 +1,19 @@
 :root {
-  color: #f4efe5;
-  background: #101417;
-  font-family: "Noto Sans JP", "Yu Gothic", system-ui, -apple-system, sans-serif;
-  line-height: 1.65;
-  font-weight: 500;
+  color: #f2f2f0;
+  background: #050505;
+  font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, -apple-system, sans-serif;
+  line-height: 1.76;
+  font-weight: 300;
+  --bg: #050505;
+  --surface: #080808;
+  --panel: #111;
+  --gold: #c99a2e;
+  --gold-hover: #b88618;
+  --line: rgba(184, 134, 24, 0.42);
+  --line-soft: rgba(242, 242, 240, 0.11);
+  --text: #f2f2f0;
+  --muted: rgba(242, 242, 240, 0.66);
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -14,7 +24,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, rgba(16, 20, 23, 0.88), rgba(16, 20, 23, 0.98)),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.98)),
     url("assets/ai-generated.jpg") center / cover fixed;
 }
 
@@ -32,9 +42,9 @@ audio {
   gap: 0.85rem;
   align-items: center;
   padding: 0.85rem clamp(1rem, 3vw, 2rem);
-  background: rgba(16, 20, 23, 0.94);
-  border-bottom: 1px solid rgba(239, 196, 104, 0.25);
-  backdrop-filter: blur(16px);
+  background: rgba(8, 8, 8, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
 }
 
 .back-link {
@@ -42,17 +52,18 @@ audio {
   place-items: center;
   width: 40px;
   height: 40px;
-  color: #f4efe5;
+  color: var(--text);
   text-decoration: none;
-  border: 1px solid rgba(244, 239, 229, 0.24);
-  border-radius: 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
 }
 
 .eyebrow {
   margin: 0;
-  color: #efc468;
+  color: var(--gold);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
@@ -66,21 +77,22 @@ h1 {
   margin-bottom: 0;
   font-size: clamp(1.15rem, 2.8vw, 1.8rem);
   line-height: 1.2;
+  font-weight: 400;
 }
 
 .status-pill {
   min-width: 82px;
   padding: 0.45rem 0.7rem;
-  border-radius: 8px;
+  border-radius: 2px;
   text-align: center;
-  color: #0f1417;
-  background: #efc468;
+  color: #090806;
+  background: var(--gold);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .status-pill.is-offline {
-  background: #72d6a1;
+  background: var(--gold-hover);
 }
 
 .app-shell {
@@ -101,9 +113,9 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, minmax(92px, 1fr));
   padding: 0.28rem;
-  border: 1px solid rgba(244, 239, 229, 0.2);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .mode-button,
@@ -115,18 +127,18 @@ h1 {
 .mode-button,
 .cache-button {
   border: 0;
-  border-radius: 6px;
-  color: #f4efe5;
-  background: transparent;
+  border-radius: 2px;
+  color: #090806;
+  background: var(--gold);
   min-height: 42px;
   padding: 0.55rem 0.8rem;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .mode-button.is-active,
 .cache-button {
-  color: #101417;
-  background: #efc468;
+  color: #090806;
+  background: var(--gold);
 }
 
 .cache-button:disabled {
@@ -136,11 +148,11 @@ h1 {
 
 .now-panel,
 .lesson-list {
-  background: rgba(18, 24, 27, 0.92);
-  border: 1px solid rgba(244, 239, 229, 0.12);
-  border-radius: 8px;
+  background: rgba(8, 8, 8, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 2px;
   padding: clamp(1rem, 3vw, 1.4rem);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
 .episode-meta,
@@ -149,7 +161,7 @@ h1 {
   justify-content: space-between;
   gap: 0.85rem;
   align-items: center;
-  color: rgba(244, 239, 229, 0.68);
+  color: var(--muted);
   font-size: 0.86rem;
 }
 
@@ -161,7 +173,7 @@ h1 {
 
 #episodeLead {
   max-width: 760px;
-  color: rgba(244, 239, 229, 0.78);
+  color: var(--muted);
 }
 
 .audio-area {
@@ -176,7 +188,7 @@ audio {
 }
 
 .audio-note {
-  color: rgba(244, 239, 229, 0.64);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -184,15 +196,15 @@ audio {
   max-height: min(52vh, 560px);
   overflow: auto;
   padding: 1rem 1.1rem;
-  color: #f8f1e8;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--line-soft);
+  border-radius: 2px;
 }
 
 .reader h3 {
   margin: 1.1rem 0 0.35rem;
-  color: #efc468;
+  color: var(--gold);
 }
 
 .reader p {
@@ -225,26 +237,26 @@ audio {
   min-height: 168px;
   padding: 1rem;
   text-align: left;
-  color: #f4efe5;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(244, 239, 229, 0.14);
-  border-radius: 8px;
+  color: var(--text);
+  background: rgba(8, 8, 8, 0.94);
+  border: 1px solid var(--line-soft);
+  border-radius: 2px;
 }
 
 .episode-card.is-active {
-  border-color: #efc468;
-  background: rgba(239, 196, 104, 0.12);
+  border-color: var(--gold);
+  background: rgba(184, 134, 24, 0.1);
 }
 
 .episode-card__tag,
 .episode-card__time {
-  color: #efc468;
+  color: var(--gold);
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .episode-card__desc {
-  color: rgba(244, 239, 229, 0.68);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 

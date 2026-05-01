@@ -1,4 +1,4 @@
-const CACHE_NAME = "quant-log-drive-study-v9";
+const CACHE_NAME = "quant-log-drive-study-v10";
 const CORE_ASSETS = [
   "./",
   "index.html",
