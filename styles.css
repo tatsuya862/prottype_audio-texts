@@ -1,18 +1,17 @@
 :root {
-  color: #f2f2f0;
-  background: #050505;
-  font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, -apple-system, sans-serif;
-  line-height: 1.76;
+  color: #f4f0e9;
+  background: #030404;
+  font-family: "Times New Roman", "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+  line-height: 1.75;
   font-weight: 300;
-  --bg: #050505;
-  --surface: #080808;
-  --panel: #111;
-  --gold: #c99a2e;
+  --bg: #030404;
+  --line: rgba(184, 134, 24, 0.44);
+  --line-soft: rgba(225, 210, 180, 0.18);
+  --gold: #d1a13a;
   --gold-hover: #b88618;
-  --line: rgba(184, 134, 24, 0.42);
-  --line-soft: rgba(242, 242, 240, 0.11);
-  --text: #f2f2f0;
-  --muted: rgba(242, 242, 240, 0.66);
+  --text: #f4f0e9;
+  --muted: rgba(244, 240, 233, 0.66);
+  --sans: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
   text-rendering: optimizeLegibility;
 }
 
@@ -24,8 +23,21 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.98)),
-    url("assets/ai-generated.jpg") center / cover fixed;
+    radial-gradient(circle at 22% 30%, rgba(255, 255, 255, 0.055), transparent 18rem),
+    radial-gradient(circle at 88% 20%, rgba(201, 154, 46, 0.05), transparent 24rem),
+    linear-gradient(115deg, #020303 0%, #050707 46%, #0a0d0d 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 96px 96px;
+  pointer-events: none;
 }
 
 button,
@@ -38,33 +50,44 @@ audio {
   top: 0;
   z-index: 5;
   display: grid;
-  grid-template-columns: 44px 1fr auto;
-  gap: 0.85rem;
+  grid-template-columns: minmax(220px, auto) 1fr auto;
+  gap: 1.25rem;
   align-items: center;
-  padding: 0.85rem clamp(1rem, 3vw, 2rem);
-  background: rgba(8, 8, 8, 0.94);
+  min-height: 92px;
+  padding: 0 clamp(1.25rem, 4vw, 3.25rem);
+  background: rgba(3, 4, 4, 0.88);
+  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-main {
+  font-size: clamp(1.3rem, 2vw, 1.85rem);
+  letter-spacing: 0.16em;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .back-link {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  color: var(--text);
-  text-decoration: none;
-  border: 1px solid var(--line);
-  border-radius: 2px;
+  display: none;
 }
 
 .eyebrow {
   margin: 0;
   color: var(--gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  font-weight: 300;
-  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
 }
 
 h1,
@@ -75,30 +98,33 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: clamp(1.15rem, 2.8vw, 1.8rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem);
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 300;
+  letter-spacing: 0.04em;
 }
 
 .status-pill {
-  min-width: 82px;
+  min-width: 88px;
   padding: 0.45rem 0.7rem;
-  border-radius: 2px;
+  border: 1px solid var(--gold);
+  border-radius: 0;
   text-align: center;
-  color: #090806;
-  background: var(--gold);
+  color: var(--gold);
+  background: transparent;
+  font-family: var(--sans);
   font-size: 0.82rem;
-  font-weight: 400;
 }
 
 .status-pill.is-offline {
-  background: var(--gold-hover);
+  border-color: var(--gold-hover);
+  color: var(--gold-hover);
 }
 
 .app-shell {
-  width: min(1040px, 100%);
+  width: min(1120px, 100%);
   margin: 0 auto;
-  padding: 1rem clamp(1rem, 3vw, 2rem) 3rem;
+  padding: clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem) 3rem;
 }
 
 .control-band {
@@ -112,9 +138,8 @@ h1 {
 .mode-toggle {
   display: grid;
   grid-template-columns: repeat(2, minmax(92px, 1fr));
-  padding: 0.28rem;
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.025);
 }
 
@@ -126,18 +151,26 @@ h1 {
 
 .mode-button,
 .cache-button {
+  min-height: 46px;
   border: 0;
-  border-radius: 2px;
-  color: #090806;
-  background: var(--gold);
-  min-height: 42px;
-  padding: 0.55rem 0.8rem;
-  font-weight: 400;
+  border-radius: 0;
+  color: var(--text);
+  background: transparent;
+  padding: 0.55rem 0.9rem;
+  letter-spacing: 0.08em;
 }
 
 .mode-button.is-active,
 .cache-button {
-  color: #090806;
+  color: var(--gold);
+}
+
+.cache-button {
+  border: 1px solid var(--gold);
+}
+
+.cache-button:hover {
+  color: #050505;
   background: var(--gold);
 }
 
@@ -148,11 +181,15 @@ h1 {
 
 .now-panel,
 .lesson-list {
-  background: rgba(8, 8, 8, 0.94);
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  padding: clamp(1rem, 3vw, 1.4rem);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--line-soft);
+  border-radius: 0;
+  background: rgba(7, 8, 8, 0.76);
+  padding: clamp(1.1rem, 3vw, 1.7rem);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+}
+
+.now-panel {
+  border-color: var(--line);
 }
 
 .episode-meta,
@@ -162,13 +199,15 @@ h1 {
   gap: 0.85rem;
   align-items: center;
   color: var(--muted);
+  font-family: var(--sans);
   font-size: 0.86rem;
 }
 
 .now-panel h2 {
-  margin: 0.35rem 0 0.7rem;
-  font-size: clamp(1.55rem, 4vw, 2.45rem);
-  line-height: 1.25;
+  margin: 0.45rem 0 0.8rem;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.22;
+  font-weight: 300;
 }
 
 #episodeLead {
@@ -189,6 +228,7 @@ audio {
 
 .audio-note {
   color: var(--muted);
+  font-family: var(--sans);
   font-size: 0.9rem;
 }
 
@@ -199,7 +239,7 @@ audio {
   color: var(--text);
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--line-soft);
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .reader h3 {
@@ -221,7 +261,9 @@ audio {
 
 .section-title h2 {
   margin-bottom: 0.2rem;
-  font-size: 1rem;
+  color: var(--gold);
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 .episode-list {
@@ -238,36 +280,39 @@ audio {
   padding: 1rem;
   text-align: left;
   color: var(--text);
-  background: rgba(8, 8, 8, 0.94);
+  background: rgba(7, 8, 8, 0.72);
   border: 1px solid var(--line-soft);
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .episode-card.is-active {
   border-color: var(--gold);
-  background: rgba(184, 134, 24, 0.1);
+  background: rgba(184, 134, 24, 0.08);
 }
 
 .episode-card__tag,
 .episode-card__time {
   color: var(--gold);
+  font-family: var(--sans);
   font-size: 0.78rem;
-  font-weight: 400;
 }
 
 .episode-card__desc {
   color: var(--muted);
+  font-family: var(--sans);
   font-size: 0.9rem;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 760px) {
   .app-header {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    padding-block: 1rem;
   }
 
-  .status-pill {
-    grid-column: 1 / -1;
-    justify-self: stretch;
+  .brand {
+    flex-direction: column;
+    gap: 0.1rem;
   }
 
   .control-band {
