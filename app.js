@@ -275,7 +275,7 @@ async function saveForOffline() {
     return;
   }
 
-  const cache = await caches.open("quant-log-drive-study-v12");
+  const cache = await caches.open("quant-log-drive-study-v13");
   const urls = [
     "./",
     "index.html",
