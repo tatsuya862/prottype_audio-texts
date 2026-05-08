@@ -218,7 +218,7 @@ function renderList() {
     node.classList.toggle("is-active", episode.id === state.activeId);
     node.querySelector(".episode-card__tag").textContent = episode.tag;
     node.querySelector("strong").textContent = episode.title;
-    node.querySelector(".episode-card__desc").textContent = episode.lead;
+    node.querySelector(".episode-card__desc")?.textContent = episode.lead;
     node.querySelector(".episode-card__time").textContent = episode.duration;
     node.addEventListener("click", () => {
       state.activeId = episode.id;
